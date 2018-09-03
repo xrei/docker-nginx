@@ -1,0 +1,16 @@
+version: '3.2'
+services:
+  nginx:
+    build: .
+    container_name: nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl.conf:/etc/nginx/ssl.conf
+      - ./mime.types:/etc/nginx/mime.types
+      - ./certs/fullchain.pem:/etc/nginx/ssl/fullchain.pem
+      - ./certs/privkey.pem:/etc/nginx/ssl/privkey.pem
+      - ./certs/chain.pem:/etc/nginx/ssl/chain.pem
+
